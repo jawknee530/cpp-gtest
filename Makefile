@@ -4,14 +4,14 @@
 
 # Points to the root of Google Test. Change it to reflect where your
 # clone of the googletest repo is
-GTEST_DIR = /usr/local/include/gtest
+GTEST_DIR = /home/jon/430/gTest/googletest/googletest
 
 # Flags passed to the preprocessor and compiler
 CPPFLAGS += -isystem $(GTEST_DIR)/include
 CXXFLAGS += -g -Wall -Wextra -pthread
 
 # All tests produced by this Makefile.
-TESTS = RandoTest
+TESTS = randoTest
 
 # All Google Test headers. Adjust only if you moved the subdirectory
 GTEST_HEADERS = $(GTEST_DIR)/include/gtest/*.h \
@@ -45,9 +45,9 @@ gtest_main.a : gtest-all.o gtest_main.o
 rando.o : rando.cpp rando.h $(GTEST_HEADERS)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c rando.cpp
 
-RandoTest.o : randoTest.cpp \
+randoTest.o : randoTest.cpp \
                      rando.h $(GTEST_HEADERS)
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c RandoTest.cpp
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -c randoTest.cpp
 
-RandoTest : rando.o RandoTest.o gtest_main.a
+randoTest : rando.o randoTest.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) -lpthread $^ -o $@
