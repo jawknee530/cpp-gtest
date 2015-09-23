@@ -29,8 +29,12 @@ TEST(RandoTest, allChildrenSmile)
 	ASSERT_TRUE( rando.shouldWorry(true,true,true) );
 }
 
-TEST(RandoTest, bGreater)
+TEST(RandoTest, whichIsGreater)
 {
   Rando rando;
   ASSERT_EQ(5, rando.nearestToZero(5, 10) );
+  ASSERT_EQ(1, rando.nearestToZero(-2, 1) );
+  ASSERT_EQ(-5, rando.nearestToZero(-5, 10) );
+  ASSERT_EQ(50, rando.nearestToZero(100, 50) );
+  
 }
